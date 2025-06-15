@@ -1,164 +1,140 @@
+ 
 
+# 📘 Integrated Eligibility System (IES) – Insurance & Public Assistance Platform
 
-# 📘 Integrated Eligibility System (IES) - Rhode Island State  
-
-The **Integrated Eligibility System (IES)** is a centralized platform developed to streamline and manage public assistance programs for the citizens of **Rhode Island (RI)**. This powerful system helps both government employees and citizens by offering a user-friendly interface to apply for, track, and manage various health and insurance plans.
+The **Integrated Eligibility System (IES)** is a centralized solution designed to streamline the management, processing, and delivery of various insurance and public assistance programs. The platform supports both applicants and authorized personnel with a secure, efficient interface for application intake, eligibility determination, and benefit tracking.
 
 ---
 
 ## 🔍 Purpose
 
-The IES Application is designed to provide a **fully integrated eligibility system** for RI state citizens. It ensures efficient service delivery by the **Department of Human Services (DHS)**.
+This application provides a **fully integrated eligibility determination and case management system** that improves the accuracy, speed, and transparency of public benefit administration.
 
 ---
 
-## 🏥 Available Plans Through IES
+## 🏥 Supported Programs
 
-Using the IES Application, DHS provides access to the following programs:
+IES supports a wide range of benefit programs, including:
 
-1. **SNAP** – Supplemental Nutrition Assistance Program
-2. **CCAP** – Child Care Assistance Program
-3. **Medicaid**
-4. **Medicare**
-5. **QHP** – Qualified Health Plans
-6. **RIW** – Rhode Island Works
-
- 
-
-## 👥 Who Uses IES?
-
-* **Case Workers**: DHS employees known as *Case Workers* use the IES system to manage citizen applications and distribute benefits.
-* **Citizens**: Rhode Island residents must visit their **nearest DHS office** and speak with a Case Worker to apply for eligible programs through the IES platform.
-
-  
-## 📋 Supported Programs
-
-IES supports eligibility determination and benefit administration for the following programs:
-
-### 1️⃣ SNAP (Supplemental Nutrition Assistance Program)
-
-> Designed for low-income families and individuals, especially those unemployed or working part-time.
-
-**Eligibility Highlights:**
-
-* Income must typically fall below 200% of the Federal Poverty Level.
-* Asset limits: ≤ \$3,000, or ≤ \$4,500 if aged 60+ or disabled.
-* Receiving other aid like SSI can enhance eligibility.
-* Ineligibility applies to certain criminal offenses or immigration status issues.
-  📖 [Learn More](https://cdhs.colorado.gov/snap)
+1. **SNAP** – Nutritional assistance for low-income individuals and families
+2. **CCAP** – Child care assistance for working parents
+3. **Medicaid** – Public insurance for eligible individuals and families
+4. **Medicare** – Health coverage for seniors and qualifying individuals with disabilities
+5. **QHP** – Qualified health insurance plans offered through regulated marketplaces
+6. **Welfare-to-Work** programs – Temporary cash assistance and employment support
 
 ---
 
-### 2️⃣ CCAP (Child Care Assistance Program)
+## 👥 System Users
 
-> Supports working families by helping pay for child care.
-
-**Eligibility Highlights:**
-
-* Child must be between 1 week and under 13 years of age.
-* For children with physical or mental disabilities, coverage extends up to 18 years.
+* **Case Managers / Application Processors**: Use the system to review applications, determine eligibility, and distribute benefits through secure, role-based access.
+* **Applicants / Citizens**: Interact with case workers to apply for benefits, submit documentation, and track eligibility status.
 
 ---
 
-### 3️⃣ Medicaid
+## 📋 Program Overviews
 
-> Public health coverage for low-income individuals and families.
+### 1️⃣ SNAP (Nutritional Assistance)
 
-**Eligibility Highlights:**
+> Helps low-income individuals and families afford basic food needs.
 
-* Children, pregnant women, parents, elderly (65+), and people with disabilities.
-* Some states, including RI, have expanded Medicaid for additional adult coverage.
-* Income thresholds vary by family size.
+**Eligibility Criteria:**
 
-📖 [Learn More](https://www.hhs.gov/answers/medicare-and-medicaid/who-is-eligible-for-medicaid/index.html)
+* Income must be below a certain threshold (typically a percentage of the poverty level).
+* Asset limits may apply, with exceptions for elderly or disabled individuals.
+* Receiving other types of aid can impact eligibility.
 
 ---
 
-### 4️⃣ Medicare
+### 2️⃣ CCAP (Child Care Assistance)
 
-> Federal health insurance program primarily for those aged 65+.
+> Supports families by subsidizing child care for working or enrolled parents.
 
-**Eligibility Highlights:**
+**Eligibility Criteria:**
 
-* Also available to individuals under 65 with disabilities, ESRD, or ALS.
-* Eligibility often linked to Social Security Disability Insurance (SSDI) status.
+* Children must be under a specific age (e.g., under 13, or 18 if disabled).
+* Parents must be working, attending school, or participating in a training program.
 
-📖 [Learn More](https://www.ssa.gov/pubs/EN-05-10043.pdf)
+---
+
+### 3️⃣ Medicaid (Public Health Coverage)
+
+> Offers health insurance to individuals and families with limited income and resources.
+
+**Eligibility Criteria:**
+
+* Based on income, family size, and health status.
+* Includes categories such as children, pregnant individuals, elderly persons, and those with disabilities.
+
+---
+
+### 4️⃣ Medicare (Senior/Disability Health Coverage)
+
+> Provides health coverage to older adults and individuals with certain long-term conditions.
+
+**Eligibility Criteria:**
+
+* Typically available to those over a certain age or with qualifying disabilities.
+* May be automatically granted after specific disability conditions are met.
 
 ---
 
 ### 5️⃣ QHP (Qualified Health Plans)
 
-> Marketplace-certified insurance plans under the Affordable Care Act (ACA).
+> Insurance plans offered through approved exchanges or marketplaces.
 
-**Eligibility Highlights:**
+**Eligibility Criteria:**
 
-* U.S. citizens or lawful residents.
-* Available to individuals, families, and small businesses via the Marketplace.
-* Must not have other comprehensive insurance coverage.
-* Premium tax credits and subsidies based on income.
-
-📖 [Learn More](https://www.healthcare.gov/quick-guide/)
+* Must be a legal resident and not already covered by other qualifying insurance.
+* Eligibility for subsidies or tax credits depends on household income.
 
 ---
 
-### 6️⃣ RIW (Rhode Island Works)
+### 6️⃣ Welfare-to-Work Programs
 
-> A welfare-to-work program offering cash assistance and job training.
+> Temporary financial assistance programs focused on helping families achieve economic self-sufficiency.
 
-**Eligibility Highlights:**
+**Eligibility Criteria:**
 
-* Families with children under 18.
-* Must meet income and asset limits.
-* Participation in employment or training is usually required.
-* Open to U.S. citizens and eligible non-citizens.
-
-📖 [Learn More](https://dhs.ri.gov/programs-and-services/ri-works-program)
+* Requires presence of dependent children in the household.
+* Includes work participation or training requirements.
+* Subject to income and resource limits.
 
 ---
 
-## 🧑‍💼 Who Uses IES?
+## 🧑‍💼 How the System Is Used
 
-* **Case Workers**: DHS employees who handle citizen cases and distribute benefits using IES.
-* **Citizens**: Must visit their nearest DHS office and consult a Case Worker to apply for programs.
-
----
-
-## 🏁 Key Benefits
-
-* ✅ Streamlines eligibility checks
-* ✅ Reduces manual processing
-* ✅ Centralized data and case management
-* ✅ Enhances service delivery and citizen satisfaction
+1. Applicants begin the process by providing required documentation.
+2. Case managers assess eligibility using built-in automated rules and workflows.
+3. Approved benefits are issued, and cases are monitored through the system.
+4. Periodic renewals and status updates are managed through the platform.
 
 ---
 
-## 🛠️ How to Use
+## 🏁 Key Features
 
-Citizens should:
-
-1. Visit the nearest **DHS Office**.
-2. Speak with a **Case Worker**.
-3. Provide required documentation for eligibility.
-4. Get enrolled and begin receiving benefits.
+* ✅ Centralized application intake and processing
+* ✅ Automated eligibility verification
+* ✅ Secure, role-based access for staff
+* ✅ End-to-end case management and tracking
+* ✅ Reduced manual errors and paperwork
+* ✅ Enhanced transparency and user satisfaction
 
 ---
 
-## 📌 Note
+## 🛠️ Developer Resources
 
-This repository may contain:
+This repository may include:
 
-* Documentation for developers contributing to the IES platform.
-* API integrations, UI mockups, or workflow automation tools.
-* References to official government resources.
+* Codebase for backend microservices (e.g., Spring Boot, MySQL)
+* API endpoints and integration documentation
+* User interface mockups or reference implementations
+* Workflow configuration and automation scripts
 
- 
+---
 
- -
+## 🚀 Project Objective
 
- 
+To deliver a scalable, secure, and intelligent eligibility management system that simplifies access to public assistance and insurance services while improving efficiency, accuracy, and service delivery across all user roles.
 
-## 🚀 Goal
-
-Empowering Rhode Island's citizens and DHS staff with a seamless, efficient, and integrated solution for accessing public assistance services.
  
