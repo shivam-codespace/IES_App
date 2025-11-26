@@ -1,0 +1,33 @@
+package in.banking.aap.repositories;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import in.banking.aap.entity.Account;
+ 
+
+@Repository
+public interface AccountRepository extends JpaRepository<Account, String>{
+
+ 
+	boolean existsByAccountnumber(long accountnumber);
+
+	boolean exitsByCodeAndOwnerUid(String code, String uid);
+
+	List<Account> findAllByOwnerUid(String uid);
+
+	Optional<Account> findByCodeAndOwnerUid(String code, String uid);
+
+	boolean existsByCodeAndOwnerUid(String code, String uid);
+
+	Optional<Account> findByAccountNumber(long recipientAccountNumber);
+
+	Optional<Account> findByCodeAndAccountNumber(String code, long recipientAccountNumber);
+
+	 
+ 
+
+}

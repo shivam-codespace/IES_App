@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Encapsulate field &apos;com.ies.bindings.PlanForm.activeSw&apos; in &apos;com.ies.bindings.PlanForm&apos;&#x0D;&#x0A;- Original project: &apos;01-Admin-Api&apos;&#x0D;&#x0A;- Original element: &apos;com.ies.bindings.PlanForm.activeSw&apos;&#x0D;&#x0A;- Getter method name: &apos;getActiveSw&apos;&#x0D;&#x0A;- Setter method name: &apos;setActiveSw&apos;&#x0D;&#x0A;- Field visibility: &apos;public&apos;&#x0D;&#x0A;- Use getter and setter methods in declaring type" comments="false" declaring="true" description="Encapsulate field &apos;activeSw, ...&apos;" flags="589830" getter="getActiveSw" id="org.eclipse.jdt.ui.self.encapsulate" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.ies.bindings{PlanForm.java[PlanForm^activeSw" insertion="7" setter="setActiveSw" stamp="1762263558031" version="1.0" visibility="1"/>
+</session>
