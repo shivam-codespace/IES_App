@@ -1,0 +1,8 @@
+Hello ${FULL_NAME},
+
+Your application has been successfully registered.
+
+Your Case Number is: ${CASE_NUM}
+
+Thank you,
+IES Support Team

@@ -1,0 +1,40 @@
+server:
+  port: 9095
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ies_app
+    username: root
+    password: "0000"
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant-path-matcher
+
+  mail:
+    host: smtp.gmail.com
+    username: www.sharma.117@gmail.com
+    password: "xnos jkag tdmv vros"
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+cloud:
+  aws:
+    credentials:
+      access-key: ""
+      secret-key: ""
+    region:
+      static: us-east-1
+    s3:
+      bucket: mynoticesunil

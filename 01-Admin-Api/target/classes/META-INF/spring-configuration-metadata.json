@@ -1,0 +1,17 @@
+{
+  "groups": [
+    {
+      "name": "admin",
+      "type": "com.ies.properties.AppProperties",
+      "sourceType": "com.ies.properties.AppProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "admin.message",
+      "type": "java.util.Map<java.lang.String,java.lang.String>",
+      "sourceType": "com.ies.properties.AppProperties"
+    }
+  ],
+  "hints": []
+}

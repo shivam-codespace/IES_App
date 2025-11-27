@@ -1,0 +1,15 @@
+O:\apis\insurence-main\05-CO-API\src\main\java\com\ies\utils\PdfUtils.java
+O:\apis\insurence-main\05-CO-API\src\main\java\com\ies\entity\EligDetailsEntity.java
+O:\apis\insurence-main\05-CO-API\src\main\java\com\ies\entity\User.java
+O:\apis\insurence-main\05-CO-API\src\main\java\com\ies\service\impl\CorrespodenceServiceImpl.java
+O:\apis\insurence-main\05-CO-API\src\main\java\com\ies\controller\CorrespondenceController.java
+O:\apis\insurence-main\05-CO-API\src\main\java\com\ies\service\CorrespondenceService.java
+O:\apis\insurence-main\05-CO-API\src\main\java\com\ies\entity\CorrespondenceEntity.java
+O:\apis\insurence-main\05-CO-API\src\main\java\com\ies\utils\S3Service.java
+O:\apis\insurence-main\05-CO-API\src\main\java\com\ies\utils\EmailUtils.java
+O:\apis\insurence-main\05-CO-API\src\main\java\com\ies\repo\CorrespondenceEntityRepo.java
+O:\apis\insurence-main\05-CO-API\src\main\java\com\ies\entity\CaseWorker.java
+O:\apis\insurence-main\05-CO-API\src\main\java\com\ies\repo\CaseWorkerRepo.java
+O:\apis\insurence-main\05-CO-API\src\main\java\com\ies\repo\EligDetailsEntityRepo.java
+O:\apis\insurence-main\05-CO-API\src\main\java\com\ies\repo\UserRepo.java
+O:\apis\insurence-main\05-CO-API\src\main\java\com\ies\Application.java

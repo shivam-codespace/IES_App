@@ -1,0 +1,203 @@
+package com.ies.service;
+
+import java.nio.file.Files;
+import java.nio.file.Paths; // ✅ Correct Import
+import java.util.*;
+
+import com.ies.bindings.App;
+import com.ies.constants.AppConstants;
+import com.ies.email.EmailService;
+import com.ies.entities.AppEntity;
+import com.ies.entities.UserEntity;
+import com.ies.exception.SsaWebException;
+import com.ies.repositories.AppRepo;
+import com.ies.repositories.UserRepo;
+
+//import io.swagger.v3.oas.models.Paths;
+import reactor.core.publisher.Mono;
+
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.reactive.function.client.WebClient;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
+import java.nio.file.Files;
+import java.util.*;
+
+@Service
+public class ArServiceImpl implements ArService {
+
+    // ✅ Using LogFactory for logging
+    private static final Log logger = LogFactory.getLog(ArServiceImpl.class);
+
+    @Autowired
+    private AppRepo appRepo;
+
+    @Autowired
+    private UserRepo userRepo;
+    
+    @Autowired
+    private EmailService emailService;
+
+    private static final String SSA_WEB_API_URL = "http://localhost:9090/ssn-web-api/find/";
+
+    @Transactional
+    @Override
+    public String createApplication(App app) {
+        logger.info("Creating application for userId=" + app.getUserId() + ", ssn=" + app.getSsn());
+        try {
+            WebClient webClient = WebClient.create();
+            String stateName = webClient.get()
+                    .uri(SSA_WEB_API_URL + app.getSsn())
+                    .retrieve()
+                    .bodyToMono(String.class)
+                    .block();
+
+            if (AppConstants.RI.equals(stateName)) {
+                Optional<UserEntity> optionalUser = userRepo.findById(app.getUserId());
+                if (optionalUser.isEmpty()) {
+                    return "User Not Found";
+                }
+
+                UserEntity userEntity = optionalUser.get();
+                AppEntity appEntity = new AppEntity();
+                BeanUtils.copyProperties(app, appEntity);
+                appEntity.setUser(userEntity);
+                appEntity.setStatus("PENDING");
+
+                appRepo.save(appEntity); // ✅ Only once
+
+                Map<String, String> values = new HashMap<>();
+                values.put("${FULL_NAME}", userEntity.getFullName());
+                values.put("${CASE_NUM}", String.valueOf(appEntity.getCaseNum()));
+
+                String body = readEmailBody("app-created-mail.txt", values);
+
+                boolean isSent = emailService.sendEmail(
+                        userEntity.getEmail(),
+                        "Registration Successful - Case No: " + appEntity.getCaseNum(),
+                        body
+                );
+
+                return "Application Created Successfully. Case Number : " + appEntity.getCaseNum();
+            } else {
+                return AppConstants.INVALID_SSN;
+            }
+
+        } catch (Exception e) {
+            throw new SsaWebException(e.getMessage());
+        }
+    }
+
+
+    @Override
+    public List<App> fetchApps(Integer userId) {
+        logger.info("Fetching applications for userId=" + userId);
+        Optional<UserEntity> optionalUser = userRepo.findById(userId);
+        if (optionalUser.isEmpty()) {
+            logger.warn("User not found for userId=" + userId);
+            return List.of();
+        }
+
+        UserEntity userEntity = optionalUser.get();
+        Integer roleId = userEntity.getRoleId();
+
+        List<AppEntity> appEntities = (roleId == 1)
+                ? appRepo.fetchUserApps()
+                : appRepo.fetchCwApps(userId);
+
+        logger.debug("Fetched " + appEntities.size() + " applications from DB for userId=" + userId);
+
+        List<App> apps = new ArrayList<>();
+        for (AppEntity entity : appEntities) {
+            App app = new App();
+            BeanUtils.copyProperties(entity, app);
+            apps.add(app);
+        }
+
+        logger.info("Returning " + apps.size() + " applications for userId=" + userId);
+        return apps;
+    }
+
+    @Override
+    public App getAppByCaseNum(Long caseNum) {
+        logger.info("Fetching application by caseNum=" + caseNum);
+        Optional<AppEntity> optionalApp = appRepo.findById(caseNum);
+
+        if (optionalApp.isEmpty()) {
+            logger.warn("No application found for caseNum=" + caseNum);
+            return null;
+        }
+
+        App app = new App();
+        BeanUtils.copyProperties(optionalApp.get(), app);
+        logger.debug("Fetched application: " + app);
+        return app;
+    }
+
+    @Override
+    public String updateAppStatus(Long caseNum, String status) {
+        logger.info("Updating status for caseNum=" + caseNum + " to " + status);
+        Optional<AppEntity> optionalApp = appRepo.findById(caseNum);
+
+        if (optionalApp.isEmpty()) {
+            logger.warn("Application not found for caseNum=" + caseNum);
+            return "Application Not Found";
+        }
+
+        AppEntity appEntity = optionalApp.get();
+        appEntity.setStatus(status.toUpperCase());
+        appRepo.save(appEntity);
+        logger.info("Status updated successfully for caseNum=" + caseNum);
+        return "Status updated successfully to " + status.toUpperCase();
+    }
+
+    @Override
+    public List<App> filterApps(String status, String planName) {
+        logger.info("Filtering applications | status=" + status + ", planName=" + planName);
+        List<AppEntity> entities;
+
+        if (status != null && planName != null) {
+            entities = appRepo.findByStatusAndPlanName(status, planName);
+        } else if (status != null) {
+            entities = appRepo.findByStatus(status);
+        } else if (planName != null) {
+            entities = appRepo.findByPlanName(planName);
+        } else {
+            entities = appRepo.findAll();
+        }
+
+        logger.debug("Found " + entities.size() + " matching applications.");
+
+        List<App> apps = new ArrayList<>();
+        for (AppEntity entity : entities) {
+            App app = new App();
+            BeanUtils.copyProperties(entity, app);
+            apps.add(app);
+        }
+
+        logger.info("Returning " + apps.size() + " filtered applications");
+        return apps;
+    }
+    
+    private String readEmailBody(String fileName, Map<String, String> values) {
+        StringBuilder sb = new StringBuilder();
+        try {
+            Files.lines(Paths.get("src/main/resources/templates/" + fileName)).forEach(line -> {
+                for (Map.Entry<String, String> val : values.entrySet()) {
+                    line = line.replace(val.getKey(), val.getValue());
+                }
+                sb.append(line).append("\n");
+            });
+        } catch (Exception e) {
+            System.out.println("Error reading template: " + e.getMessage());
+        }
+        return sb.toString();
+    }
+
+    
+}
